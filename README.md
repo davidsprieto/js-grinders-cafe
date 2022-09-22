@@ -1,2 +1,2 @@
 # Grinders Café
-JavaScript Coffee Application
+JavaScript Coffee List Application
