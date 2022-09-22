@@ -15,6 +15,15 @@ td, th {
     background-position: center;
 }
 
+.bi-github {
+    color: black;
+}
+
+.bi-github:hover {
+    color: goldenrod;
+}
+
 footer {
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
