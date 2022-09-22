@@ -1,2 +1,2 @@
 # grinders-cafe
-js-coffee-project
+JavaScript Single Page Application
