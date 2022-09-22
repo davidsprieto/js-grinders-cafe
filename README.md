@@ -1,2 +1,2 @@
-# grinders-cafe
-JavaScript Single Page Application
+# Grinders Café
+JavaScript Coffee Application
