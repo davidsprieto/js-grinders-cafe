@@ -14,3 +14,7 @@ td, th {
     background-size: cover;
     background-position: center;
 }
+
+footer {
+    margin-top: 2rem;
+}
