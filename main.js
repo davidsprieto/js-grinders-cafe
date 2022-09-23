@@ -56,8 +56,9 @@ function addACoffee(e) {
     updateCoffeesByName(e);
     alert('Your coffee was added to the list!');
     document.querySelector('#add-coffee').reset(); // clear the form for the next entries
+
     let coffees_serialized = JSON.stringify(coffees);
-    localStorage.setItem('coffees', coffees_serialized);
+    localStorage.setItem('coffees', coffees_serialized); // sets/saves the new coffees the user adds to the 'coffees' object in local storage until the user clears cookies/search history
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -78,6 +79,8 @@ let coffees = [
     {id: 14, name: 'French', roast: 'Dark'},
 ];
 
+console.log(typeof coffees);
+
 function sort() {
     coffees.sort((a, b) => {
         return (b.id - a.id);
@@ -93,10 +96,9 @@ let coffeeSearch = document.querySelector('#coffee-selection');
 let coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
 
 if (coffees_deserialized != null && coffees_deserialized.length >= 14) {
-    bodyMainDiv.innerHTML = renderCoffees(JSON.parse(localStorage.getItem('coffees')));
-    console.log(coffees_deserialized);
+    bodyMainDiv.innerHTML = renderCoffees(JSON.parse(localStorage.getItem('coffees'))); // when the user adds a new coffee to the list, the 'coffees' object gets saved in local storage with that new coffee added to it. This retrieves the 'coffees' object in local storage and displays it on the page.
 } else {
-    bodyMainDiv.innerHTML = renderCoffees(coffees);
+    bodyMainDiv.innerHTML = renderCoffees(coffees); // renders and displays hard coded 'coffees' object.
 }
 
 roastSelection.addEventListener('change', updateCoffeesByRoast);
