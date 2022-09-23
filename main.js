@@ -1,4 +1,4 @@
-"use strict"
+"use strict";
 
 function renderCoffee(coffee) {
     let html = '<div id="coffees" class="coffee">';
@@ -48,13 +48,16 @@ function addACoffee(e) {
         id: coffees.length + 1,
         name: document.getElementById('new-coffee-selection').value,
         roast: document.getElementById('new-roast-selection').value
-    };
+    }
 
     coffees.push(newCoffee);
+    sort();
     updateCoffeesByRoast(e);
     updateCoffeesByName(e);
-    document.getElementById("new-coffee-selection").value = "";
-
+    alert('Your coffee was added to the list!');
+    document.querySelector('#add-coffee').reset(); // clear the form for the next entries
+    let coffees_serialized = JSON.stringify(coffees);
+    localStorage.setItem('coffees', coffees_serialized);
 }
 
 // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
@@ -75,16 +78,26 @@ let coffees = [
     {id: 14, name: 'French', roast: 'Dark'},
 ];
 
-coffees.sort((a, b) => {
-    return (b.id - a.id);
-});
+function sort() {
+    coffees.sort((a, b) => {
+        return (b.id - a.id);
+    });
+}
+sort();
 
 let bodyMainDiv = document.querySelector('#coffees');
 let submitButton = document.querySelector('#submit');
 let roastSelection = document.querySelector('#roast-selection');
 let coffeeSearch = document.querySelector('#coffee-selection');
 
-bodyMainDiv.innerHTML = renderCoffees(coffees);
+let coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
+
+if (coffees_deserialized != null && coffees_deserialized.length >= 14) {
+    bodyMainDiv.innerHTML = renderCoffees(JSON.parse(localStorage.getItem('coffees')));
+    console.log(coffees_deserialized);
+} else {
+    bodyMainDiv.innerHTML = renderCoffees(coffees);
+}
 
 roastSelection.addEventListener('change', updateCoffeesByRoast);
 submitButton.addEventListener('click', addACoffee);
