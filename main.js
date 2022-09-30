@@ -79,8 +79,6 @@ let coffees = [
     {id: 14, name: 'French', roast: 'Dark'},
 ];
 
-console.log(typeof coffees);
-
 function sort() {
     coffees.sort((a, b) => {
         return (b.id - a.id);
