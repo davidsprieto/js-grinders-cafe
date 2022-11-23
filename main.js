@@ -1,5 +1,6 @@
 "use strict";
 
+// Function returns html to render and display the coffees on the page
 function renderCoffee(coffee) {
     let html = '<div id="coffees" class="coffee">';
     html += '<span class="badge badge-warning">' + '#' + coffee.id + ":" + '</span>';
@@ -10,6 +11,7 @@ function renderCoffee(coffee) {
     return html;
 }
 
+// Function loops through the coffees object and passes the data into renderCoffees to be displayed on the page
 function renderCoffees(coffees) {
     let html = '';
     for(let i = coffees.length - 1; i >= 0; i--) {
@@ -18,6 +20,7 @@ function renderCoffees(coffees) {
     return html;
 }
 
+// Function displays the coffees by roast selection
 function updateCoffeesByRoast() {
     let selectedRoast = roastSelection.value;
     let filteredCoffeeRoasts = [];
@@ -31,6 +34,7 @@ function updateCoffeesByRoast() {
     });
 }
 
+// Function displays the coffees by name selection
 function updateCoffeesByName() {
     let selectedCoffee = coffeeSearch.value;
     let filteredCoffeeNames = [];
@@ -46,6 +50,7 @@ function updateCoffeesByName() {
     bodyMainDiv.innerHTML = renderCoffees(filteredCoffeeNames);
 }
 
+// Function
 function addACoffee(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     let newCoffee = {
@@ -83,6 +88,7 @@ let coffees = [
     {id: 14, name: 'French', roast: 'Dark'},
 ];
 
+// Function sorts coffees by id from smallest to largest
 function sort() {
     coffees.sort((a, b) => {
         return (b.id - a.id);
@@ -90,19 +96,22 @@ function sort() {
 }
 sort();
 
-let bodyMainDiv = document.querySelector('#coffees');
-let submitButton = document.querySelector('#submit');
-let roastSelection = document.querySelector('#roast-selection');
-let coffeeSearch = document.querySelector('#coffee-selection');
+// constant variables not to be reassigned values
+const bodyMainDiv = document.querySelector('#coffees');
+const submitButton = document.querySelector('#submit');
+const roastSelection = document.querySelector('#roast-selection');
+const coffeeSearch = document.querySelector('#coffee-selection');
+const coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
 
-let coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
-
+// when the user adds a new coffee to the list, the 'coffees' object gets saved in local storage with the new coffee added to it.
+// This retrieves the 'coffees' object in local storage and displays it on the page.
 if (coffees_deserialized != null && coffees_deserialized.length >= 14) {
-    bodyMainDiv.innerHTML = renderCoffees(JSON.parse(localStorage.getItem('coffees'))); // when the user adds a new coffee to the list, the 'coffees' object gets saved in local storage with that new coffee added to it. This retrieves the 'coffees' object in local storage and displays it on the page.
+    bodyMainDiv.innerHTML = renderCoffees(JSON.parse(localStorage.getItem('coffees')));
 } else {
     bodyMainDiv.innerHTML = renderCoffees(coffees); // renders and displays hard coded 'coffees' object.
 }
 
+// Event listeners
 roastSelection.addEventListener('change', updateCoffeesByRoast);
 submitButton.addEventListener('click', addACoffee);
 coffeeSearch.addEventListener('keyup', updateCoffeesByName);
