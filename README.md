@@ -10,5 +10,5 @@ Style Sheet Language:
 Programming language:
 - JavaScript
 
-Frameworks:
+Framework:
 - Bootstrap
