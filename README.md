@@ -1,14 +1,23 @@
-# Grinders Café - Search a List of Coffees or Add your Favorite Coffee to the List!
-Single-page web application developed using:
+<h1 align="center">
+  Grinders Café - Search a List of Coffees or Add your Favorite Coffee to the List!
+</h1>
 
-Markup Language:
-- HTML
+<h3 align="center">
+  Single-page web application developed using:
+</h3>
 
-Style Sheet Language:
-- CSS
+<p align="center">
+  Markup Language: HTML
+</p>
 
-Programming language:
-- JavaScript
+<p align="center">
+  Style Sheet Language: CSS
+</p>
 
-Framework:
-- Bootstrap
+<p align="center">
+  Programming language: JavaScript
+</p>
+
+<p align="center">
+  Framework: Bootstrap
+</p>
