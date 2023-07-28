@@ -14,7 +14,7 @@ function renderCoffee(coffee) {
 // Function loops through the coffees object and passes the data into renderCoffees to be displayed on the page
 function renderCoffees(coffees) {
     let html = '';
-    for(let i = coffees.length - 1; i >= 0; i--) {
+    for (let i = coffees.length - 1; i >= 0; i--) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -24,7 +24,7 @@ function renderCoffees(coffees) {
 function updateCoffeesByRoast() {
     let selectedRoast = roastSelection.value;
     let filteredCoffeeRoasts = [];
-    coffees.forEach(function(coffee) {
+    coffees.forEach(function (coffee) {
         if (coffee.roast === selectedRoast) {
             filteredCoffeeRoasts.push(coffee);
             bodyMainDiv.innerHTML = renderCoffees(filteredCoffeeRoasts);
@@ -38,7 +38,7 @@ function updateCoffeesByRoast() {
 function updateCoffeesByName() {
     let selectedCoffee = coffeeSearch.value;
     let filteredCoffeeNames = [];
-    coffees.forEach(function(coffee) {
+    coffees.forEach(function (coffee) {
         if (coffee.name === selectedCoffee || coffee.name.startsWith(selectedCoffee)
             || coffeeSearch.value.toLowerCase() === coffee.name.toLowerCase()
             || coffee.name.toLowerCase().startsWith(selectedCoffee.toLowerCase())
@@ -94,6 +94,7 @@ function sort() {
         return (b.id - a.id);
     });
 }
+
 sort();
 
 // constant variables not to be reassigned values
