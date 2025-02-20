@@ -1,5 +1,12 @@
 "use strict";
 
+// constant variables not to be reassigned values
+const bodyMainDiv = document.querySelector('#coffees');
+const submitButton = document.querySelector('#submit');
+const roastSelection = document.querySelector('#roast-selection');
+const coffeeSearch = document.querySelector('#coffee-selection');
+const coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
+
 // Function returns html to render and display the coffees on the page
 function renderCoffee(coffee) {
     let html = '<div id="coffees" class="coffee">';
@@ -96,13 +103,6 @@ function sort() {
 }
 
 sort();
-
-// constant variables not to be reassigned values
-const bodyMainDiv = document.querySelector('#coffees');
-const submitButton = document.querySelector('#submit');
-const roastSelection = document.querySelector('#roast-selection');
-const coffeeSearch = document.querySelector('#coffee-selection');
-const coffees_deserialized = JSON.parse(localStorage.getItem('coffees'));
 
 // when the user adds a new coffee to the list, the 'coffees' object gets saved in local storage with the new coffee added to it.
 // This retrieves the 'coffees' object in local storage and displays it on the page.
